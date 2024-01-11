@@ -53,16 +53,16 @@ class newConnection: public Poco::Net::TCPServerConnection
                         nBytes = socket().sendBytes("Welcome to POCO TCP server. Enter you string:\n", 46);
                         if(nBytes > 0)
                         {
-                            if(nBytes > BUFFER_SIZE)
+                            while(isOpen)
                             {
-                                socket().sendBytes("The message length is more than 255\n", 36);
-                            }
-                            else
-                            {
-                                while(isOpen)
+                                nBytes = socket().receiveBytes(ucBuffer, sizeof(ucBuffer));
+                                if(nBytes > 0)
                                 {
-                                    nBytes = socket().receiveBytes(ucBuffer, sizeof(ucBuffer));
-                                    if(nBytes > 0)
+                                    if(nBytes > BUFFER_SIZE)
+                                    {
+                                        socket().sendBytes("The message length is more than 255\n", 36);
+                                    }
+                                    else
                                     {
                                         reverseBytes(ucBuffer, nBytes-2);
                                         socket().sendBytes(ucBuffer, nBytes);
