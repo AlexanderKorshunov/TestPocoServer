@@ -6,13 +6,13 @@
 #include "Poco/Net/SocketStream.h"
 #include "Poco/Net/Socket.h"
 
-using namespace std;
-
 #define BUFFER_SIZE         255
 #define TCP_PORT            28888
 #define COUNT_THREAD        14
 #define COUNT_QUEUE         14
 #define THREAD_IDLE_TIME    100
+
+using namespace std;
 
 class newConnection: public Poco::Net::TCPServerConnection
 {
