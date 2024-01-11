@@ -17,4 +17,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc
 cd ../../POCO_SERVER
 g++ ./poco_server.cpp -L/usr/local/lib -lPocoFoundation -lPocoNet -lpthread -o EXE
-rm -r ../POCO
+sudo rm -r ../POCO
